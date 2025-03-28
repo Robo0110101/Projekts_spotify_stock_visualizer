@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Welcome to Spotify Stock Dashboard</h1>
+    
+    <div class="features">
+        <a href="{{ url_for('stock_data') }}" class="feature-card data-card">
+            <div class="card-content">
+                <h2>📊 Stock Data</h2>
+                <p>View detailed historical stock data</p>
+            </div>
+        </a>
+
+        <a href="{{ url_for('stock_visualizations') }}" class="feature-card viz-card">
+            <div class="card-content">
+                <h2>📈 Visualizations</h2>
+                <p>Explore interactive charts and graphs</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

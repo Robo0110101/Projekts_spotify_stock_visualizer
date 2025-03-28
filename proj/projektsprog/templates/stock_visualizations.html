@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title">Spotify Stock Visualizations</h1>
+    
+    <form method="GET" action="">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ start_date }}">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ end_date }}">
+        <button type="submit">Filter</button>
+    </form>
+
+    {% if no_data %}
+        <p class="error">No data available for the selected date range</p>
+    {% endif %}
+
+    <div class="chart-container">
+        <h2>Closing Prices</h2>
+        {% if close_price_chart %}
+            <img src="data:image/png;base64,{{ close_price_chart }}" 
+                 alt="Closing Prices Chart">
+        {% else %}
+            <p class="error">No closing price data available</p>
+        {% endif %}
+    </div>
+
+    <div class="chart-container">
+        <h2>Trading Volume</h2>
+        {% if volume_chart %}
+            <img src="data:image/png;base64,{{ volume_chart }}" 
+                 alt="Volume Chart">
+        {% else %}
+            <p class="error">No volume data available</p>
+        {% endif %}
+    </div>
+{% endblock %}

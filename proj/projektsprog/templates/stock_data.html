@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title">Spotify Stock Data</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Volume</th>
+        </tr>
+        {% for record in data %}
+        <tr>
+            <td>{{ record.date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ "%.2f"|format(record.open_price) }}</td>
+            <td>{{ "%.2f"|format(record.high_price) }}</td>
+            <td>{{ "%.2f"|format(record.low_price) }}</td>
+            <td>{{ "%.2f"|format(record.close_price) }}</td>
+            <td>{{ "{:,}".format(record.volume) }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">No data found!</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

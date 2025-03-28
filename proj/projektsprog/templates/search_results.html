@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="search-container">
+    <h2 class="search-results-title">Search Results for "{{ query }}"</h2>
+    
+    <div class="no-results-message">
+        <p>We couldn't find any matches for your search.</p>
+        <p>Here are some suggestions:</p>
+        
+        <ol class="search-suggestions">
+            <li>Try different keywords like "revenue growth" or "Q4 earnings"</li>
+            <li>Search for specific dates in YYYY-MM-DD format (e.g., 2023-12-31)</li>
+            <li>Use general terms like "visualization" or "raw data"</li>
+            <li>Check your spelling</li>
+        </ol>
+    </div>
+
+    <div class="popular-searches">
+        <h3>Popular Pages:</h3>
+        <ul class="popular-links">
+            <li><a href="{{ url_for('stock_visualizations') }}">Stock Performance Charts</a></li>
+            <li><a href="{{ url_for('stock_data') }}">Historical Raw Data</a></li>
+            <li><a href="/">Home Page</a></li>
+        </ul>
+    </div>
+
+    <div class="search-again">
+        <h3>Try another search:</h3>
+        <form class="search-form" action="/search" method="GET">
+            <input type="text" name="query" placeholder="Search..." value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
